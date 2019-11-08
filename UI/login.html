@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Broadcaster Login Page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="./css/broadcaster.css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+	<nav>
+		<ul><li><a href="#">BROADCASTER</a></li></ul>
+		<div class="menu" id="menu-icon">
+			<i class="fa fa-bars"></i>
+		</div>
+	</nav>
+	<nav id="main">
+		<ul id="left"><li><a href="#">BROADCASTER</a></li></ul>
+		<ul id="center">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">My red-flags</a></li>
+			<li><a href="#">New red-flag</a></li>
+			<li><a href="#">My interventions</a></li>
+			<li><a href="#">New intervention</a></li>
+		</ul>
+		<ul id="right">
+			<li><a href="#">login</a></li>
+			<li><a href="./html/signup.html">signup</a></li>
+		</ul>
+	</nav>
+
+	<div class="auth-form">
+		<form id="login" action="./html/index.html">
+			<h2>Broadcaster Login</h2>
+			<input type="text" required="true" class="login-input" />
+			<label>username</label>
+			<br>
+			<input type="password" required="true" class="login-input"/>
+			<label>password</label>
+			<br>
+			<input type="submit" class="form-btn" value="Login" />
+			<a href="./html/signup.html">create account</a>
+		</form>
+	</div>
+
+<script type="text/javascript" src="broadcaster.js"></script>
+</body>
+</html>
