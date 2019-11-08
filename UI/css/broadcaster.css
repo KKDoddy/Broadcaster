@@ -340,3 +340,98 @@ input[type="file"]::-webkit-file-upload-button {
 input[type="file"]::before{
 	background-color: green;
 }
+
+.scrollable {
+	width: 100%;
+	overflow-x: auto;
+}
+
+.table {
+	width: 85%;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+	font-size: .9em;
+	border-radius: 3px 3px 0 0;
+	overflow: hidden;
+	/*box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);*/
+}
+
+.table thead tr {
+	height: 25px;
+	background-color: rgb(83, 121, 155);
+	color: white;
+	font-weight: bold;
+}
+
+.table th, .table td {
+	text-align: left;
+	padding: 12px 15px;
+}
+
+.row {
+	border-bottom: 2px solid lightgrey;
+}
+
+.table tbody tr:nth-of-type(even) {
+	background-color: rgb(235, 235, 235);
+}
+
+.table tbody tr:last-of-type {
+	border-bottom: 2px solid rgb(83, 121, 155);
+}
+
+.brief-info h4{
+	width: 85%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.brief-info {
+	width: 85%;
+}
+
+.table button {
+	display: block;
+	float: left;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5px 10px;
+	outline: none;
+	border: none;
+	color: rgb(255,255,255);
+	border-radius: 3px; 
+	margin-top: 3px;
+}
+
+.table button:first-of-type {
+	width: 100%;
+	background-color: rgb(255, 193, 7);
+}
+
+.table button:first-of-type:hover {
+	background-color: rgb(217, 162, 0);
+}
+
+.table button:nth-of-type(2),
+.table button:nth-of-type(3) {
+	width: 50%;
+}
+
+.table button:nth-of-type(2) {
+	background-color: rgb(40, 167, 69);
+}
+
+.table button:nth-of-type(2):hover {
+	background-color: rgb(34, 130, 56);
+}
+
+.table button:nth-of-type(3) {
+	background-color: rgb(220, 53, 69);
+}
+
+.table button:nth-of-type(3):hover {
+	background-color: rgb(176, 40, 53);
+}
