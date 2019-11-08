@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create intervention</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/broadcaster.css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+	<nav>
+		<ul><li><a href="index.html">BROADCASTER</a></li></ul>
+		<div class="menu" id="menu-icon">
+			<i class="fa fa-bars"></i>
+		</div>
+	</nav>
+	<nav id="main">
+		<ul id="left"><li><a href="index.html">BROADCASTER</a></li></ul>
+		<ul id="center">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="my red-flags.html">My red-flags</a></li>
+			<li><a href="newRed-flag.html">New red-flag</a></li>
+			<li><a href="my interventions.html">My interventions</a></li>
+			<li><a href="newIntervention.html">New intervention</a></li>
+		</ul>
+		<ul id="right">
+			<li><a href="#">MMinani</a></li>
+			<li><a href="../login.html">log out</a></li>
+		</ul>
+	</nav>
+
+	<div class="central">
+		<div id="red-flag-form">
+		<h3>New Intervention</h3>
+		<form>
+			<input class="coolInput" type="text" required="true"/>
+			<label class="coolLabel">Title</label>
+			<textarea class="coolInput" rows="3" cols="100" required="true"></textarea>
+			<label class="coolLabel">Comment</label>
+			<input class="coolInput" type="text" required="true"/>
+			<label class="coolLabel">Location(longitude latitude)</label>
+			<input class="coolInput" type="file" placeholder="image/video" accept="image/*,video/*">
+			<input class="coolButton" type="submit" value="Save draft"/>
+			<input class="coolButton" type="submit" value="Submit"/>
+		</form>
+		</div>
+	</div>
+
+<script type="text/javascript" src="broadcaster.js"></script>
+</body>
+</html>
