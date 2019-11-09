@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>All red-flags</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/broadcaster.css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+	<nav>
+		<ul><li><a href="#">BROADCASTER</a></li></ul>
+		<div class="menu" id="menu-icon">
+			<i class="fa fa-bars"></i>
+		</div>
+	</nav>
+	<nav id="main">
+		<ul id="left"><li><a href="#">BROADCASTER</a></li></ul>
+		<ul id="center">
+			<li><a href="allRed-flags.html">All red-flags</a></li>
+			<li><a href="allInterventions.html">All interventions</a></li>
+		</ul>
+		<ul id="right">
+			<li><a href="adminLogin.html">login</a></li>
+			<li><a href="adminSignup.html">signup</a></li>
+		</ul>
+	</nav>
+
+	<div class="central">
+		<div class="brief-info">
+			<h3>All Red-flags</h3>
+			<hr>
+			<h4>Pending : <span id="pending">0</span></h4>
+			<h4>Under investigation : <span id="under_is">2</span></h4>
+			<h4>Resolved : <span id="resolved">0</span></h4>
+			<h4>Rejected : <span id="rejected">0</span></h4>
+			<hr>
+		</div>
+	</div>
+
+	<div class="central">
+		<div class="scrollable">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>create on</th>
+						<th>create by</th>
+						<th>Title</th>
+						<th>Comment</th>
+						<th>Location</th>
+						<th>Status</th>
+						<th>Mark-as</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="row">
+						<td>22/08/2019</td>
+						<td>MMinani</td>
+						<td>Corrupt cop</td>
+						<td>Lorem Ipsum is </td>
+						<td>-2.381973, 30.000010</td>
+						<td>Under investigation</td>
+						<td><button>Under Investigation</button><button>Resolved</button><button>Rejected</button></td>
+					</tr>
+					<tr class="row">
+						<td>02/07/2019</td>
+						<td>Emmanuel_23</td>
+						<td>Bribery</td>
+						<td>Lorem Ipsum is </td>
+						<td>-2.381973, 30.000010</td>
+						<td>Under investigation</td>
+						<td><button>Under Investigation</button><button>Resolved</button><button>Rejected</button></td>
+					</tr>
+				</tbody>			
+			</table>
+		</div>
+	</div>
+
+<script type="text/javascript" src="broadcaster.js"></script>
+</body>
+</html>
