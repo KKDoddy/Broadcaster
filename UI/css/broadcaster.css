@@ -2,7 +2,7 @@ body {
 	margin: 0;
 	padding: 0;
 	background-color: rgb(240, 240, 240); 
-	font-family: sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 nav {
@@ -26,17 +26,13 @@ nav ul li {
 	display: inline-block;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 7px;
+	padding-right: 7px;
 }
 
 nav ul li a {
 	text-decoration: none;
 	color: white;
-}
-
-nav:nth-of-type(1) {
-	display: none;
 }
 
 .menu {
@@ -355,7 +351,6 @@ input[type="file"]::before{
 	font-size: .9em;
 	border-radius: 3px 3px 0 0;
 	overflow: hidden;
-	/*box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);*/
 }
 
 .table thead tr {
@@ -434,4 +429,132 @@ input[type="file"]::before{
 
 .table button:nth-of-type(3):hover {
 	background-color: rgb(176, 40, 53);
+}
+
+
+#logo {
+	font-family: 'Abril Fatface', cursive;
+	font-size: larger;
+}
+
+#menuBar {
+	display: none;
+}
+
+#menuBar div {
+	width: 100%;
+	background-color: rgb(0, 40, 90);
+	font-size: 15px;
+}
+
+#menuBar ul {
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-top: 0;
+	margin-bottom: 0;
+	text-align: center;
+}
+
+#menuBar ul li {
+	list-style: none;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#menuBar a {
+	text-decoration: none;
+	color: white;
+}
+
+#menuBar i {
+	color: white;
+	font-size: 140%;
+}
+
+#bar {
+	display: flex;
+}
+
+#bar ul:first-of-type {
+	flex: 1;
+	display: flex;
+	justify-content: flex-start;
+}
+
+#bar ul:first-of-type li {
+	margin-left: 20px; 
+
+}
+
+#bar ul:last-of-type {
+	flex: 1;
+	display: flex;
+	justify-content: flex-end;
+}
+
+#bar ul:last-of-type li {
+	margin-right: 20px;
+}
+
+@media(max-width: 940px){
+	.table button:nth-of-type(2),
+	.table button:nth-of-type(3) {
+		width: 100%;
+	}
+}
+
+
+
+@media(min-width: 835px){
+	#menuBar{
+		display: none;
+	}
+
+	nav[id="main"]{
+		display: flex;
+	}
+}
+
+@media(max-width: 834px) {
+	#menuBar{
+		display: initial;
+	}
+
+	nav[id="main"]{
+		display: none;
+	}
+
+	#login {
+		width: 60%;
+		margin-bottom: 10px;
+	}
+
+	#signup {
+		width: 70%;
+		margin-bottom: 10px;
+		padding-right: 10%;
+	}
+
+	.scrollable {
+		width: 80%;
+	}
+
+	.table button:first-of-type {
+		width: 100%;
+		background-color: rgb(255, 193, 7);
+	}
+
+	.table button:nth-of-type(2),
+	.table button:nth-of-type(3) {
+		width: 100%;
+	}
+
+	nav[id="main"] ul li:hover {
+		background-color: rgb(0, 110, 190);
+	}
+
+	nav ul li a:hover {
+		color: white;
+	}
+	
 }

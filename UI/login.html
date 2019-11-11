@@ -5,16 +5,34 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="./css/broadcaster.css">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-	<nav>
-		<ul><li><a href="#">BROADCASTER</a></li></ul>
-		<div class="menu" id="menu-icon">
-			<i class="fa fa-bars"></i>
+	<div id="menuBar">
+		<div id="bar">
+			<ul>
+				<li><a id="logo" href="index.html">BROADCASTER</a></li>
+			</ul>
+			<ul>
+				<li><i class="fa fa-bars"></i></li>
+			</ul>
 		</div>
-	</nav>
+		<div id="list" class="disappear">
+			<ul>
+				<li><a href="#">Home</a></li>
+                <li><a href="#">My red-flags</a></li>
+                <li><a href="#">New red-flag</a></li>
+                <li><a href="#">My interventions</a></li>
+                <li><a href="#">New intervention</a></li>
+			</ul>
+			<ul>
+                <li><a href="#">login</a></li>
+                <li><a href="./html/signup.html">signup</a></li>
+			</ul>
+		</div>
+	</div>
 	<nav id="main">
-		<ul id="left"><li><a href="#">BROADCASTER</a></li></ul>
+		<ul id="left"><li><a id="logo" href="index.html">BROADCASTER</a></li></ul>
 		<ul id="center">
 			<li><a href="#">Home</a></li>
 			<li><a href="#">My red-flags</a></li>
@@ -42,6 +60,6 @@
 		</form>
 	</div>
 
-<script type="text/javascript" src="broadcaster.js"></script>
+<script type="text/javascript" src="./javascript/broadcaster.js"></script>
 </body>
 </html>
