@@ -33,12 +33,12 @@ const signupChecker = [
 ];
 
 const signinChecker = [
-	check("email", "invalid email address").exists().withMessage("email required").trim()
-		.isEmail()
-		.withMessage("invalid email address")
-		.normalizeEmail(),
-	check("password").exists().withMessage("password required").isString()
-		.withMessage("a string is expected"),
+  check('email', 'invalid email address').exists().withMessage('email required').trim()
+    .isEmail()
+    .withMessage('invalid email address')
+    .normalizeEmail(),
+  check('password').exists().withMessage('password required').isString()
+    .withMessage('a string is expected'),
 ];
 
-export { signupChecker , signinChecker };
+export { signupChecker, signinChecker };
