@@ -6,11 +6,41 @@ import user from '../models/user';
 
 class authorization {
 
+  static signin(req, res) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(422).json({ status: 422, error: errors.array() });
+    } else {
+      const found = user.find((acc) => acc.email === req.body.email);
+
+      if (found) {
+        if (bcrypt.compareSync(req.body.password, found.password)) {
+          const token = jwt.sign({ email: found.email }, process.env.PRIVATEKEY);
+          res
+            .status(200)
+            .json({
+              status: 200,
+              message: 'successfully logged in',
+              data: [{ token: token }],
+            });
+        } else {
+          res
+            .status(401)
+            .json({ status: 401, error: 'username or password incorrect' });
+        }
+      } else {
+        res
+          .status(401)
+          .json({ status: 401, error: 'username or password incorrect' });
+      }
+    }
+  }
+
   static signup(req, res) {
     // validation
     const {
- id, firstName, lastName, email, phoneNumber, username 
-} = req.body;
+      id, firstName, lastName, email, phoneNumber, username,
+    } = req.body;
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
