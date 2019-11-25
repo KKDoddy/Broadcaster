@@ -5,7 +5,6 @@ import { validationResult } from 'express-validator';
 import user from '../models/user';
 
 class authorization {
-
   static signin(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -86,9 +85,7 @@ class authorization {
         });
       }
     }
-
   }
-
 }
 
 export default authorization;
