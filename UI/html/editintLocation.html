@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My red-flags</title>
+	<title>Create red-flag</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../css/broadcaster.css">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -47,58 +47,15 @@
 	</nav>
 
 	<div class="central">
-		<div class="brief-info">
-			<h3>My Red-flags</h3>
-			<hr>
-			<h4>Draft : <span id="drafts">0</span></h4>
-			<h4>Pending : <span id="pending">0</span></h4>
-			<h4>Under investigation : <span id="under_is">2</span></h4>
-			<h4>Resolved : <span id="resolved">0</span></h4>
-			<h4>Rejected : <span id="rejected">0</span></h4>
-			<hr>
-		</div>
-	</div>
-
-	<div class="central">
-		<div class="scrollable">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>created on</th>
-						<th>Title</th>
-						<th>Comment</th>
-						<th>Location</th>
-						<th>Status</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="row">
-						<td>22/08/2019</td>
-						<td>Corrupt cop</td>
-						<td>Lorem Ipsum is </td>
-						<td>-2.381973, 30.000010</td>
-						<td>Under investigation</td>
-						<td>
-							<form action="#"><button class="userBtn">Delete</button></form>
-							<form action="editredComment.html"><button class="userBtn">Edit Comment</button></form>
-							<form action="editredLocation.html"><button class="userBtn">Edit Location</button></form>
-						</td>
-					</tr>
-					<tr class="row">
-						<td>02/07/2019</td>
-						<td>Bribery</td>
-						<td>Lorem Ipsum is </td>
-						<td>-2.381973, 30.000010</td>
-						<td>Under investigation</td>
-						<td>
-							<form action="#"><button class="userBtn">Delete</button></form>
-							<form action="editredComment.html"><button class="userBtn">Edit Comment</button></form>
-							<form action="editredLocation.html"><button class="userBtn">Edit Location</button></form>
-						</td>
-					</tr>
-				</tbody>			
-			</table>
+		<div id="new-location-form">
+        <h3>Edit intervention Location</h3>
+        <br>
+        <br>
+		<form>
+			<input class="coolInput" type="text" required="true"/>
+			<label class="coolLabel">Location(longitude latitude)</label>
+			<input class="coolButton" type="submit" value="Update"/>
+		</form>
 		</div>
 	</div>
 

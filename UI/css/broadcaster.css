@@ -126,6 +126,12 @@ nav ul li a {
 #login input[type="text"]:focus + label,
 #login input[type="text"]:valid + label 
 {
+	top: -64px;
+	color: rgb(0, 40, 90);
+	font-size: .9em;
+}
+
+.lift {
 	top: -63px;
 	color: rgb(0, 40, 90);
 	font-size: .9em;
@@ -244,6 +250,21 @@ nav ul li a {
 	padding: 20px;
 	box-sizing: content-box;
 	border-radius: 3px;
+}
+
+#new-location-form {
+	background-color: white;
+	height: 300px;
+	width: 700px;
+	padding: 20px;
+	box-sizing: content-box;
+	border-radius: 3px;
+}
+
+#new-location-form h3{
+	text-align: center;
+	margin-bottom: 50px;
+	color: rgb(0, 40, 90);
 }
 
 #red-flag-form h3{
@@ -397,8 +418,16 @@ input[type="file"]::before{
 	outline: none;
 	border: none;
 	color: rgb(255,255,255);
-	border-radius: 3px; 
+	border-radius: 3px;
 	margin-top: 3px;
+}
+
+.table form:first-of-type button{
+	background-color: rgb(220, 53, 69);
+}
+
+.table form:first-of-type button:hover {
+	background-color: rgb(176, 40, 53);
 }
 
 .table button:first-of-type {
