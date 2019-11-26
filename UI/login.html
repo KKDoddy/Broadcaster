@@ -11,7 +11,7 @@
 	<div id="menuBar">
 		<div id="bar">
 			<ul>
-				<li><a id="logo" href="index.html">BROADCASTER</a></li>
+				<li><a id="logo" href="./html/index.html">BROADCASTER</a></li>
 			</ul>
 			<ul>
 				<li><i class="fa fa-bars"></i></li>
@@ -32,7 +32,7 @@
 		</div>
 	</div>
 	<nav id="main">
-		<ul id="left"><li><a id="logo" href="index.html">BROADCASTER</a></li></ul>
+		<ul id="left"><li><a class="logo" href="./html/index.html">BROADCASTER</a></li></ul>
 		<ul id="center">
 			<li><a href="#">Home</a></li>
 			<li><a href="#">My red-flags</a></li>
@@ -47,12 +47,12 @@
 	</nav>
 
 	<div class="auth-form">
-		<form id="login" action="./html/index.html">
+		<form id="login" action="./html/index.html" method="POST">
 			<h2>Broadcaster Login</h2>
-			<input type="text" required="true" class="login-input" />
-			<label>username</label>
+			<input type="text" required class="login-input" name="email"/>
+			<label>email</label>
 			<br>
-			<input type="password" required="true" class="login-input"/>
+			<input type="password" required class="login-input" name="password"/>
 			<label>password</label>
 			<br>
 			<input type="submit" class="form-btn" value="Login" />

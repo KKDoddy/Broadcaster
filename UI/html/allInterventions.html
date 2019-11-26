@@ -1,27 +1,51 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>All interventions</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../css/broadcaster.css">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Roboto&display=swap" rel="stylesheet">
 </head>
+
 <body>
-	<nav>
-		<ul><li><a href="#">BROADCASTER</a></li></ul>
-		<div class="menu" id="menu-icon">
-			<i class="fa fa-bars"></i>
+
+
+
+
+
+	<div id="menuBar">
+		<div id="bar">
+			<ul>
+				<li><a class="logo" href="index.html">BROADCASTER</a></li>
+			</ul>
+			<ul>
+				<li><i class="fa fa-bars"></i></li>
+			</ul>
 		</div>
-	</nav>
+		<div id="list" class="disappear">
+			<ul>
+				<li><a href="allRed-flags.html">All red-flags</a></li>
+				<li><a href="allInterventions.html">All interventions</a></li>
+			</ul>
+			<ul>
+				<li><a href="../login.html">login</a></li>
+				<li><a href="../login.html">log out</a></li>
+			</ul>
+		</div>
+	</div>
 	<nav id="main">
-		<ul id="left"><li><a href="#">BROADCASTER</a></li></ul>
+		<ul id="left">
+			<li><a class="logo" href="index.html">BROADCASTER</a></li>
+		</ul>
 		<ul id="center">
 			<li><a href="allRed-flags.html">All red-flags</a></li>
 			<li><a href="allInterventions.html">All interventions</a></li>
 		</ul>
 		<ul id="right">
 			<li><a href="../login.html">login</a></li>
-			<li><a href="adminSignup.html">Admin signup</a></li>
+			<li><a href="../login.html">log out</a></li>
 		</ul>
 	</nav>
 
@@ -49,7 +73,7 @@
 						<th>Comment</th>
 						<th>Location</th>
 						<th>Status</th>
-						<th  id="last">Mark-as</th>
+						<th id="last">Mark-as</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -71,11 +95,12 @@
 						<td>Under investigation</td>
 						<td><button>Under Investigation</button><button>Resolved</button><button>Rejected</button></td>
 					</tr>
-				</tbody>			
+				</tbody>
 			</table>
 		</div>
 	</div>
 
-<script type="text/javascript" src="broadcaster.js"></script>
+	<script type="text/javascript" src="../javascript/broadcaster.js"></script>
 </body>
+
 </html>
