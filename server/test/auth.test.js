@@ -74,27 +74,26 @@ const InvalidSignupPasswordConfirmation = {
 };
 
 const KarambiziSignin = {
-	email: "karemano@gmail.com",
-	password: "magogo"
+  email: 'karemano@gmail.com',
+  password: 'magogo',
 };
 
 const InvalidSignin = {
-	email: "karema no@gmail.com",
-	password: ""
+  email: 'karema no@gmail.com',
+  password: '',
 };
 
 const KarambiziSigninWrongEmail = {
-	email: "karemano09@gmail.com",
-	password: "magogo"
+  email: 'karemano09@gmail.com',
+  password: 'magogo',
 };
 
 const KarambiziSigninWrongPassword = {
-	email: "karemano@gmail.com",
-	password: "password"
+  email: 'karemano@gmail.com',
+  password: 'password',
 };
 
 describe('user authentication tests', () => {
-
   it('user should be able to signup', (done) => {
     chai.request(app).post('/api/v1/auth/signup').send(Karambizi).end((err, result) => {
       result.should.have.status(201);
@@ -183,5 +182,4 @@ describe('user authentication tests', () => {
       done();
     });
   });
-
 });
