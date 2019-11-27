@@ -25,6 +25,7 @@ const redFlagInvalid = {
 };
 
 describe('running red-flag routes tests', () => {
+  let ksId;
   it('creating a red flag', (done) => {
     chai
       .request(app)
@@ -34,6 +35,7 @@ describe('running red-flag routes tests', () => {
       .attach('videos', `${__dirname}/redVideo.mp4`)
       .set('token', KarambiziToken)
       .end((err, result) => {
+        ksId = result.body.data[0].id;
         result.should.have.status(201);
         result.body.should.have.property('data');
         done();
@@ -112,6 +114,15 @@ describe('running red-flag routes tests', () => {
 
   it("should get all red-flags owned", done => {
     chai.request(app).get("/api/v1/red-flags").send().set("token", KarambiziToken)
+    .end((err, result)=>{
+      result.should.have.status(200);
+      result.body.should.have.property("data");
+      done();
+    });
+  });
+
+  it("should get a specific red-flag", done => {
+    chai.request(app).get(`/api/v1/red-flags/${ksId}`).send().set("token", KarambiziToken)
     .end((err, result)=>{
       result.should.have.status(200);
       result.body.should.have.property("data");
