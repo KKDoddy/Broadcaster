@@ -110,6 +110,15 @@ describe('running red-flag routes tests', () => {
       });
   });
 
+  it("should get all red-flags owned", done => {
+    chai.request(app).get("/api/v1/red-flags").send().set("token", KarambiziToken)
+    .end((err, result)=>{
+      result.should.have.status(200);
+      result.body.should.have.property("data");
+      done();
+    });
+  });
+
   it('should not allow access with invalid token', (done) => {
     chai
       .request(app)
