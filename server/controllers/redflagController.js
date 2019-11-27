@@ -3,12 +3,16 @@ import { validationResult } from "express-validator";
 import Redflag from "../models/red-flag";
 
 class redflagController {
-    
   static getAll(req, res) {
     const owned = Redflag.filter(record => {
       return record.createdBy === req.uEmail;
     });
     res.status(200).json({ staus: 200, data: owned });
+  }
+
+  static findOne(req, res) {
+    const red = Redflag.find(rf => rf.id === req.params.id);
+    res.status(200).json({ status: 200, data: red });
   }
 
   static createRedFlag(req, res) {
