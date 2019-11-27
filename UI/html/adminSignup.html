@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Broadcaster Signup Page</title>
+	<title>Broadcaster Administrator Signup Page</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../css/broadcaster.css">
 	<link rel="stylesheet" type="text/css" href="../css/broadcaster.css">
@@ -12,76 +12,87 @@
 
 <body>
 
-
-
-
-
-
-	<div id="menuBar">
-		<div id="bar">
-			<ul>
+	<div id="bodyWrapper">
+		<div id="menuBar">
+			<div id="bar">
+				<ul>
+					<li><a class="logo" href="index.html">BROADCASTER</a></li>
+				</ul>
+				<ul>
+					<li><i class="fa fa-bars"></i></li>
+				</ul>
+			</div>
+			<div id="list" class="disappear">
+				<ul>
+					<li><a href="allRed-flags.html">All red flags</a></li>
+					<li><a href="allInterventions.html">All interventions</a></li>
+				</ul>
+				<ul>
+					<li><a href="../login.html">login</a></li>
+					<li><a href="../login.html">log out</a></li>
+				</ul>
+			</div>
+		</div>
+		<nav id="main">
+			<ul id="left">
 				<li><a class="logo" href="index.html">BROADCASTER</a></li>
 			</ul>
-			<ul>
-				<li><i class="fa fa-bars"></i></li>
-			</ul>
-		</div>
-		<div id="list" class="disappear">
-			<ul>
-				<li><a href="allRed-flags.html">All red-flags</a></li>
+			<ul id="center">
+				<li><a href="allRed-flags.html">All red flags</a></li>
 				<li><a href="allInterventions.html">All interventions</a></li>
 			</ul>
-			<ul>
+			<ul id="right">
 				<li><a href="../login.html">login</a></li>
 				<li><a href="../login.html">log out</a></li>
 			</ul>
+		</nav>
+
+		<div class="auth-form">
+			<form id="signup" action="adminLogin.html">
+				<h2>Admin Signup</h2>
+				<input type="text" required="true" class="inputs" />
+				<label>Id number</label>
+				<br>
+				<input type="text" required="true" class="inputs" />
+				<label>Firstname</label>
+				<br>
+				<input type="text" required="true" class="inputs" />
+				<label>Lastname</label>
+				<br>
+				<input type="text" required="true" class="inputs" />
+				<label>Email address</label>
+				<br>
+				<input type="text" required="true" class="inputs" />
+				<label>Phone number</label>
+				<br>
+				<input type="text" required="true" class="inputs" />
+				<label>username</label>
+				<br>
+				<input type="password" required="true" class="inputs" />
+				<label>password</label>
+				<br>
+				<input type="password" required="true" class="inputs" />
+				<label>password confirmation</label>
+				<br>
+				<input type="submit" class="form-btn" value="Sign up" />
+				<a href="adminLogin.html">login</a>
+			</form>
 		</div>
 	</div>
-	<nav id="main">
-		<ul id="left">
-			<li><a class="logo" href="index.html">BROADCASTER</a></li>
-		</ul>
-		<ul id="center">
-			<li><a href="allRed-flags.html">All red-flags</a></li>
-			<li><a href="allInterventions.html">All interventions</a></li>
-		</ul>
-		<ul id="right">
-			<li><a href="../login.html">login</a></li>
-			<li><a href="../login.html">log out</a></li>
-		</ul>
-	</nav>
 
-	<div class="auth-form">
-		<form id="signup" action="adminLogin.html">
-			<h2>Admin Signup</h2>
-			<input type="text" required="true" class="inputs" />
-			<label>Id number</label>
-			<br>
-			<input type="text" required="true" class="inputs" />
-			<label>Firstname</label>
-			<br>
-			<input type="text" required="true" class="inputs" />
-			<label>Lastname</label>
-			<br>
-			<input type="text" required="true" class="inputs" />
-			<label>Email address</label>
-			<br>
-			<input type="text" required="true" class="inputs" />
-			<label>Phone number</label>
-			<br>
-			<input type="text" required="true" class="inputs" />
-			<label>username</label>
-			<br>
-			<input type="password" required="true" class="inputs" />
-			<label>password</label>
-			<br>
-			<input type="password" required="true" class="inputs" />
-			<label>password confirmation</label>
-			<br>
-			<input type="submit" class="form-btn" value="Sign up" />
-			<a href="adminLogin.html">login</a>
-		</form>
-	</div>
+	<footer id="footer">
+		<div id="leftFooter">
+
+		</div>
+		<div id="rights">
+			© Kalimba Kwizera Doddy 2019
+		</div>
+		<div id="contacts">
+			<p>+250782244844</p>
+			<p>broadcaster.main@gmail.com</p>
+		</div>
+
+	</footer>
 
 	<script type="text/javascript" src="../javascript/broadcaster.js"></script>
 </body>

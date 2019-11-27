@@ -1,4 +1,9 @@
+html {
+	height: 100%;
+}
+
 body {
+	height: 100%;
 	margin: 0;
 	padding: 0;
 	background-color: rgb(240, 240, 240); 
@@ -523,6 +528,40 @@ input[type="file"]::before{
 
 #bar ul:last-of-type li {
 	margin-right: 20px;
+}
+
+#bodyWrapper {
+	min-height: 100%;
+	overflow: auto;
+	padding-bottom: 80px;
+}
+
+#footer {
+	background-color: rgb(0, 40, 90);
+	color: white;
+	font-size: .8em;
+	position: relative;
+	height: 80px;
+	margin-top: -80px;
+	clear: both;
+	display: flex;
+	align-items: center;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#leftFooter {
+	flex: 2;
+}
+
+#contacts {
+	flex: 2;
+	text-align: right;
+}
+
+#rights {
+	flex: 4;
+	text-align: center;
 }
 
 @media(max-width: 940px){

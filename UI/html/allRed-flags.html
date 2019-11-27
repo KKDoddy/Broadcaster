@@ -10,95 +10,105 @@
 </head>
 
 <body>
-
-
-
-
-
-
-	<div id="menuBar">
-		<div id="bar">
-			<ul>
+	<div id="bodyWrapper">
+		<div id="menuBar">
+			<div id="bar">
+				<ul>
+					<li><a class="logo" href="index.html">BROADCASTER</a></li>
+				</ul>
+				<ul>
+					<li><i class="fa fa-bars"></i></li>
+				</ul>
+			</div>
+			<div id="list" class="disappear">
+				<ul>
+					<li><a href="allRed-flags.html">All red flags</a></li>
+					<li><a href="allInterventions.html">All interventions</a></li>
+				</ul>
+				<ul>
+					<li><a href="../login.html">login</a></li>
+					<li><a href="../login.html">log out</a></li>
+				</ul>
+			</div>
+		</div>
+		<nav id="main">
+			<ul id="left">
 				<li><a class="logo" href="index.html">BROADCASTER</a></li>
 			</ul>
-			<ul>
-				<li><i class="fa fa-bars"></i></li>
-			</ul>
-		</div>
-		<div id="list" class="disappear">
-			<ul>
-				<li><a href="allRed-flags.html">All red-flags</a></li>
+			<ul id="center">
+				<li><a href="allRed-flags.html">All red flags</a></li>
 				<li><a href="allInterventions.html">All interventions</a></li>
 			</ul>
-			<ul>
+			<ul id="right">
 				<li><a href="../login.html">login</a></li>
 				<li><a href="../login.html">log out</a></li>
 			</ul>
-		</div>
-	</div>
-	<nav id="main">
-		<ul id="left">
-			<li><a class="logo" href="index.html">BROADCASTER</a></li>
-		</ul>
-		<ul id="center">
-			<li><a href="allRed-flags.html">All red-flags</a></li>
-			<li><a href="allInterventions.html">All interventions</a></li>
-		</ul>
-		<ul id="right">
-			<li><a href="../login.html">login</a></li>
-			<li><a href="../login.html">log out</a></li>
-		</ul>
-	</nav>
+		</nav>
 
-	<div class="central">
-		<div class="brief-info">
-			<h3>All Red-flags</h3>
-			<hr>
-			<h4>Pending : <span id="pending">0</span></h4>
-			<h4>Under investigation : <span id="under_is">2</span></h4>
-			<h4>Resolved : <span id="resolved">0</span></h4>
-			<h4>Rejected : <span id="rejected">0</span></h4>
-			<hr>
+		<div class="central">
+			<div class="brief-info">
+				<h3>All Red-flags</h3>
+				<hr>
+				<h4>Pending : <span id="pending">0</span></h4>
+				<h4>Under investigation : <span id="under_is">2</span></h4>
+				<h4>Resolved : <span id="resolved">0</span></h4>
+				<h4>Rejected : <span id="rejected">0</span></h4>
+				<hr>
+			</div>
+		</div>
+
+		<div class="central">
+			<div class="scrollable">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>create on</th>
+							<th>create by</th>
+							<th>Title</th>
+							<th>Comment</th>
+							<th>Location</th>
+							<th>Status</th>
+							<th>Mark-as</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="row">
+							<td>22/08/2019</td>
+							<td>MMinani</td>
+							<td>Corrupt cop</td>
+							<td>Lorem Ipsum is </td>
+							<td>-2.381973, 30.000010</td>
+							<td>Under investigation</td>
+							<td><button>Under Investigation</button><button>Resolve</button><button>Reject</button></td>
+						</tr>
+						<tr class="row">
+							<td>02/07/2019</td>
+							<td>Emmanuel_23</td>
+							<td>Bribery</td>
+							<td>Lorem Ipsum is </td>
+							<td>-2.381973, 30.000010</td>
+							<td>Under investigation</td>
+							<td><button>Under Investigation</button><button>Resolve</button><button>Reject</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 
-	<div class="central">
-		<div class="scrollable">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>create on</th>
-						<th>create by</th>
-						<th>Title</th>
-						<th>Comment</th>
-						<th>Location</th>
-						<th>Status</th>
-						<th>Mark-as</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="row">
-						<td>22/08/2019</td>
-						<td>MMinani</td>
-						<td>Corrupt cop</td>
-						<td>Lorem Ipsum is </td>
-						<td>-2.381973, 30.000010</td>
-						<td>Under investigation</td>
-						<td><button>Under Investigation</button><button>Resolved</button><button>Rejected</button></td>
-					</tr>
-					<tr class="row">
-						<td>02/07/2019</td>
-						<td>Emmanuel_23</td>
-						<td>Bribery</td>
-						<td>Lorem Ipsum is </td>
-						<td>-2.381973, 30.000010</td>
-						<td>Under investigation</td>
-						<td><button>Under Investigation</button><button>Resolved</button><button>Rejected</button></td>
-					</tr>
-				</tbody>
-			</table>
+	<footer id="footer">
+		<div id="leftFooter">
+
 		</div>
-	</div>
+		<div id="rights">
+			© Kalimba Kwizera Doddy 2019
+		</div>
+		<div id="contacts">
+			<p>+250782244844</p>
+			<p>broadcaster.main@gmail.com</p>
+		</div>
+
+	</footer>
 
 	<script type="text/javascript" src="../javascript/broadcaster.js"></script>
 </body>
