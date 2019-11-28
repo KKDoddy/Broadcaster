@@ -10,6 +10,7 @@ const isLoggedIn = (req, res, next) => {
     req.uEmail = decoded.email;
     const pretender = User.find((u) => u.email === req.uEmail);
     if (pretender) {
+      req.uId = pretender.id;
       next();
     } else {
       res.status(401).json({ error: 'user not recognized' });

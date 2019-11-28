@@ -123,26 +123,10 @@ describe('user authentication tests', () => {
     });
   });
 
-  it('should not allow user with already registered id to signup', (done) => {
-    chai.request(app).post('/api/v1/auth/signup').send(KarambiziSameId).end((err, result) => {
-      result.should.have.status(409);
-      result.body.should.have.property('error', 'account with the same id already exists');
-      done();
-    });
-  });
-
   it('should not allow user with already registered email to signup', (done) => {
     chai.request(app).post('/api/v1/auth/signup').send(karambiziSameEmail).end((err, result) => {
       result.should.have.status(409);
       result.body.should.have.property('error', 'account with the same email already exists');
-      done();
-    });
-  });
-
-  it('should not allow user with already registered email or id to signup', (done) => {
-    chai.request(app).post('/api/v1/auth/signup').send(KarambiziminaniSameIdEmail).end((err, result) => {
-      result.should.have.status(409);
-      result.body.should.have.property('error', 'account with the same id and email already exists');
       done();
     });
   });

@@ -2,7 +2,6 @@ import { check } from 'express-validator';
 
 
 const signupChecker = [
-  check('id', 'id should be 16 digits').isNumeric().isLength({ min: 16, max: 16 }),
   check('firstName').exists().withMessage('first name is required').isAlpha()
     .withMessage('first name is required')
     .isLength({ min: 3 })
