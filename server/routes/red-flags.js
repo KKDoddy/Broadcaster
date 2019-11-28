@@ -13,5 +13,6 @@ router.get("" ,isLoggedIn , controller.getAll );
 router.post('', isLoggedIn, getUuid, upload.fields([{ name: 'images', maxCount: 1 }, { name: 'videos', maxCount: 1 }]), checker, controller.createRedFlag);
 router.patch("/:id/location",isLoggedIn, locationChecker , controller.patchLocation);
 router.patch("/:id/comment",isLoggedIn, commentChecker, controller.patchComment);
+router.delete("/:id", isLoggedIn, controller.deleteRedFlag);
 
 export default router;

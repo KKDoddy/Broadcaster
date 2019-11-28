@@ -173,6 +173,29 @@ class redflagController {
       return res.status(404).json({ status: 404, error: "record not found" });
     }
   }
+
+  static deleteRedFlag(req, res) {
+    const red = Redflag.find(record => {
+        return record.id === req.params.id;
+    });
+    if (red) {
+        if (red.createdBy === req.uEmail) {
+            const index = Redflag.findIndex(el => el.id === red.id);
+            Redflag.splice(index, 1);
+            return res
+                .status(200)
+                .json({
+                    status: 200,
+                    data: [{ id: red.id, message: "red-flag record has been deleted" }]
+                });
+        }
+        return res
+            .status(401)
+            .json({ status: 401, error: "not authorized to delete record" });
+    }
+    return res.status(404).json({ status: 404, error: "record not found" });
+}
+
 }
 
 export default redflagController;
