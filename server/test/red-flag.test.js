@@ -167,6 +167,42 @@ describe('running red-flag routes tests', () => {
     });
   });
 
+  it("should be able to modify the location of a specific red-flag", done => {
+    chai.request(app).patch(`/api/v1/red-flags/${ksId}/location`).send({location: "-30.025869,29.823188"}).set("token", KarambiziToken)
+    .end((err, result)=>{
+      result.should.have.status(201);
+      result.body.should.have.property("data");
+      done();
+    });
+  });
+
+  it("shouldn't be able to modify the location of a not owned red-flag", done => {
+    chai.request(app).patch(`/api/v1/red-flags/${ksId}/location`).send({location: "-30.025869,29.823188"}).set("token", GoavaToken)
+    .end((err, result)=>{
+      result.should.have.status(401);
+      result.body.should.have.property("error");
+      done();
+    });
+  });
+  
+  it("should not be able to modify the location of a red-flag with a non valid location", done => {
+    chai.request(app).patch(`/api/v1/red-flags/${ksId}/location`).send({location: ""}).set("token", KarambiziToken)
+    .end((err, result)=>{
+      result.should.have.status(422);
+      result.body.should.have.property("error");
+      done();
+    });
+  });
+
+  it("should not be able to modify the location of a non existing red-flag record", done => {
+    chai.request(app).patch(`/api/v1/red-flags/12345678/location`).send({location: "-30.025869,29.823188"}).set("token", KarambiziToken)
+    .end((err, result)=>{
+      result.should.have.status(404);
+      result.body.should.have.property("error");
+      done();
+    });
+  });
+
   it('should not allow access with invalid token', (done) => {
     chai
       .request(app)
