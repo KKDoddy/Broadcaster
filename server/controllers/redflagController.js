@@ -5,7 +5,7 @@ import Redflag from "../models/red-flag";
 class redflagController {
   static getAll(req, res) {
     const owned = Redflag.filter(record => {
-      return record.createdBy === req.uEmail;
+      return record.createdBy === req.uId;
     });
     res.status(200).json({ staus: 200, data: owned });
   }
@@ -27,7 +27,7 @@ class redflagController {
           Redflag.push({
             id: req.id,
             createdOn: new Date(),
-            createdBy: req.uEmail,
+            createdBy: req.uId,
             title: title,
             type: "red-flag",
             comment: comment,
@@ -49,7 +49,7 @@ class redflagController {
           Redflag.push({
             id: req.id,
             createdOn: new Date(),
-            createdBy: req.uEmail,
+            createdBy: req.uId,
             title: title,
             type: "red-flag",
             comment: comment,
@@ -71,7 +71,7 @@ class redflagController {
           Redflag.push({
             id: req.id,
             createdOn: new Date(),
-            createdBy: req.uEmail,
+            createdBy: req.uId,
             title: title,
             type: "red-flag",
             comment: comment,
@@ -94,7 +94,7 @@ class redflagController {
         Redflag.push({
           id: req.id,
           createdOn: new Date(),
-          createdBy: req.uEmail,
+          createdBy: req.uId,
           title: title,
           type: "red-flag",
           comment: comment,
@@ -123,7 +123,7 @@ class redflagController {
     } else {
       const red = Redflag.find(rf => rf.id === req.params.id);
       if (red) {
-        if (red.createdBy === req.uEmail) {
+        if (red.createdBy === req.uId) {
           const index = Redflag.findIndex(el => el.id === red.id);
           Redflag[index].comment = req.body.comment;
           return res.status(201).json({
@@ -152,7 +152,7 @@ class redflagController {
     } else {
       const red = Redflag.find(rf => rf.id === req.params.id);
       if (red) {
-        if (red.createdBy === req.uEmail) {
+        if (red.createdBy === req.uId) {
           const index = Redflag.findIndex(el => el.id === red.id);
           Redflag[index].location = req.body.location;
           return res.status(201).json({
@@ -179,7 +179,7 @@ class redflagController {
         return record.id === req.params.id;
     });
     if (red) {
-        if (red.createdBy === req.uEmail) {
+        if (red.createdBy === req.uId) {
             const index = Redflag.findIndex(el => el.id === red.id);
             Redflag.splice(index, 1);
             return res
