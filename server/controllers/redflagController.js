@@ -115,6 +115,35 @@ class redflagController {
       }
     }
   }
+
+  static patchComment(req, res) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(422).json({ status: 422, error: errors.array() });
+    } else {
+      const red = Redflag.find(rf => rf.id === req.params.id);
+      if (red) {
+        if (red.createdBy === req.uEmail) {
+          const index = Redflag.findIndex(el => el.id === red.id);
+          Redflag[index].comment = req.body.comment;
+          return res.status(201).json({
+            status: 201,
+            data: [
+              {
+                id: Redflag[index].id,
+                message: "Updated red-flag record's comment"
+              }
+            ]
+          });
+        }
+        return res.status(401).json({
+          status: 401,
+          error: "not authorized to modify the record's comment"
+        });
+      }
+      return res.status(404).json({ status: 404, error: "record not found" });
+    }
+  }
 }
 
 export default redflagController;

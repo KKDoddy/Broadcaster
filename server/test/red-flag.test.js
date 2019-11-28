@@ -7,6 +7,7 @@ chai.should();
 
 const KarambiziToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVtYW5vQGdtYWlsLmNvbSIsImlhdCI6MTU3NDIwMjQ5MH0.XZTEDZjtGyz7QTEK1Qwb_mNkzkE6lqai9_LhkM1TP1o';
 const minaniToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmFuaUBnbWFpbC5jb20iLCJpYXQiOjE1NzQyMDI3OTZ9.zLVSFsUM06LgwsIvPoWvtlAPpEuUugXQ3iNYHsQdIlM';
+const GoavaToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdlZ2VAZ21haWwuY29tIiwiaWF0IjoxNTc0OTE5NzI1fQ.WMdgGAa7QzUcw6Fp_s15GqkGWWF4X9BjPfjXSAcBwLc';
 
 const redFlag = {
   title: 'bribery',
@@ -126,6 +127,42 @@ describe('running red-flag routes tests', () => {
     .end((err, result)=>{
       result.should.have.status(200);
       result.body.should.have.property("data");
+      done();
+    });
+  });
+
+  it("should be able to modify the comment of a specific red-flag", done => {
+    chai.request(app).patch(`/api/v1/red-flags/${ksId}/comment`).send({comment: "modified comment"}).set("token", KarambiziToken)
+    .end((err, result)=>{
+      result.should.have.status(201);
+      result.body.should.have.property("data");
+      done();
+    });
+  });
+
+  it("shouldn't be able to modify the comment of a not owned red-flag", done => {
+    chai.request(app).patch(`/api/v1/red-flags/${ksId}/comment`).send({comment: "modified comment"}).set("token", GoavaToken)
+    .end((err, result)=>{
+      result.should.have.status(401);
+      result.body.should.have.property("error");
+      done();
+    });
+  });
+
+  it("should not be able to modify the comment of a red-flag with an empty comment", done => {
+    chai.request(app).patch(`/api/v1/red-flags/${ksId}/comment`).send({comment: ""}).set("token", KarambiziToken)
+    .end((err, result)=>{
+      result.should.have.status(422);
+      result.body.should.have.property("error");
+      done();
+    });
+  });
+
+  it("should not be able to modify the comment of a non existing red-flag record", done => {
+    chai.request(app).patch(`/api/v1/red-flags/12345678/comment`).send({comment: "some comment"}).set("token", KarambiziToken)
+    .end((err, result)=>{
+      result.should.have.status(404);
+      result.body.should.have.property("error");
       done();
     });
   });

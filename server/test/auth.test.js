@@ -17,6 +17,16 @@ const Karambizi = {
   passwordConfirmation: 'magogo',
 };
 
+const Goava = {
+  id: 1199680121855555,
+  firstName: 'Alex',
+  lastName: 'Guevora',
+  email: 'gege@gmail.com',
+  phoneNumber: '0788654543',
+  username: 'Minanil23',
+  password: 'magogo',
+  passwordConfirmation: 'magogo',
+};
 
 const KarambiziSameId = {
   id: 1199680121878040,
@@ -94,8 +104,18 @@ const KarambiziSigninWrongPassword = {
 };
 
 describe('user authentication tests', () => {
+
   it('user should be able to signup', (done) => {
     chai.request(app).post('/api/v1/auth/signup').send(Karambizi).end((err, result) => {
+      result.should.have.status(201);
+      result.body.should.have.property('message', 'User created successfully');
+      result.body.should.have.property('data');
+      done();
+    });
+  });
+
+  it('user should be able to signup (for Minani red-flags tests)', (done) => {
+    chai.request(app).post('/api/v1/auth/signup').send(Goava).end((err, result) => {
       result.should.have.status(201);
       result.body.should.have.property('message', 'User created successfully');
       result.body.should.have.property('data');
