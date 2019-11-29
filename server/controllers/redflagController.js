@@ -10,10 +10,10 @@ class redflagController {
 
   static findOne(req, res) {
     const red = Redflag.find((rf) => rf.id === req.params.id);
-    if(red){
+    if (red) {
       res.status(200).json({ status: 200, data: red });
     } else {
-      res.status(404).json({ status: 404, error: "record not found" });
+      res.status(404).json({ status: 404, error: 'record not found' });
     }
   }
 
@@ -184,12 +184,10 @@ class redflagController {
       if (red.createdBy === req.uId) {
         const index = Redflag.findIndex((el) => el.id === red.id);
         Redflag.splice(index, 1);
-        return res
-          .status(200)
-          .json({
-            status: 200,
-            data: [{ id: red.id, message: 'red-flag record has been deleted' }],
-          });
+        return res.status(200).json({
+          status: 200,
+          data: [{ id: red.id, message: 'red-flag record has been deleted' }],
+        });
       }
       return res
         .status(401)
@@ -197,7 +195,6 @@ class redflagController {
     }
     return res.status(404).json({ status: 404, error: 'record not found' });
   }
-
 }
 
 export default redflagController;

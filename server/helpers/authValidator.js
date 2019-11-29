@@ -23,6 +23,8 @@ const signupChecker = [
     .withMessage('a string is expected')
     .isLength({ min: 6 })
     .withMessage('should atleast 6 characters long')
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*])(?=.*[0-9])(?=.{8,})/)
+    .withMessage('password must contain at least 1 lowercase alphabetical character, 1 uppercase, alphabetical character, 1 numeric character, one special character')
     .custom((value, { req }) => {
       if (value !== req.body.passwordConfirmation) {
         throw new Error('incorrect password confirmation');

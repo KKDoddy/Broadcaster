@@ -7,51 +7,36 @@ chai.use(http);
 chai.should();
 
 const Karambizi = {
-  id: 1199680121878040,
   firstName: 'Emanuel',
   lastName: 'Karambizi',
   email: 'karemano@gmail.com',
   phoneNumber: '0788654543',
   username: 'Emanuel23',
-  password: 'magogo',
-  passwordConfirmation: 'magogo',
+  password: "@Magogo23",
+  passwordConfirmation: "@Magogo23"
 };
 
 const Goava = {
-  id: 1199680121855555,
   firstName: 'Alex',
   lastName: 'Guevora',
   email: 'gege@gmail.com',
   phoneNumber: '0788654543',
   username: 'Minanil23',
-  password: 'magogo',
-  passwordConfirmation: 'magogo',
-};
-
-const KarambiziSameId = {
-  id: 1199680121878040,
-  firstName: 'Joseph',
-  lastName: 'Karambizi',
-  email: 'karem@gmail.com',
-  phoneNumber: '0782674543',
-  username: 'Emanuel',
-  password: 'password',
-  passwordConfirmation: 'password',
+  password: '@Magogo23',
+  passwordConfirmation: '@Magogo23',
 };
 
 const karambiziSameEmail = {
-  id: 1199680121478030,
   firstName: 'JClaude',
   lastName: 'Minani',
   email: 'karemano@gmail.com',
   phoneNumber: '0788774543',
   username: 'MMinani',
-  password: 'password123',
-  passwordConfirmation: 'password123',
+  password: '@Magogo23',
+  passwordConfirmation: '@Magogo23',
 };
 
 const KarambiziminaniSameIdEmail = {
-  id: 1199680121878040,
   firstName: 'JClaude',
   lastName: 'Minani',
   email: 'karemano@gmail.com',
@@ -62,30 +47,28 @@ const KarambiziminaniSameIdEmail = {
 };
 
 const InvalidSignup = {
-  id: 11996801578040,
   firstName: '',
   lastName: '',
   email: 'min     ani@gmail.com',
   phoneNumber: 'invalid phone',
   username: 'MMina$ni',
-  password: 'Minani123',
-  passwordConfirmation: 'Minani123',
+  password: '@Magogo23',
+  passwordConfirmation: '@Magogo23',
 };
 
 const InvalidSignupPasswordConfirmation = {
-  id: 11996801578040,
   firstName: '',
   lastName: '',
   email: 'min     ani@gmail.com',
   phoneNumber: 'invalid phone',
   username: 'MMina$ni',
-  password: 'Minani321',
-  passwordConfirmation: 'Minani123',
+  password: '@Magogo23',
+  passwordConfirmation: '@Magogo2333',
 };
 
 const KarambiziSignin = {
   email: 'karemano@gmail.com',
-  password: 'magogo',
+  password: '@Magogo23',
 };
 
 const InvalidSignin = {
@@ -95,7 +78,7 @@ const InvalidSignin = {
 
 const KarambiziSigninWrongEmail = {
   email: 'karemano09@gmail.com',
-  password: 'magogo',
+  password: '@Magogo23',
 };
 
 const KarambiziSigninWrongPassword = {
