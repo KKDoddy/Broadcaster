@@ -44,20 +44,19 @@ class authorization {
     if (!errors.isEmpty()) {
       res.status(422).json({ status: 422, error: errors.array() });
     } else {
-
       const emailExists = user.find((acc) => acc.email === email);
-      
+
       if (emailExists) {
-          res.status(409).json({
-            status: 409,
-            error: 'account with the same email already exists',
-          });
+        res.status(409).json({
+          status: 409,
+          error: 'account with the same email already exists',
+        });
       } else {
         let actualId;
-        if(user.length!=0){
-          actualId = user[user.length-1].id + 1;
+        if (user.length != 0) {
+          actualId = user[user.length - 1].id + 1;
         } else {
-          actualId = 1 ;
+          actualId = 1;
         }
         const password = bcrypt.hashSync(req.body.password, 10);
         user.push({
@@ -73,7 +72,17 @@ class authorization {
         res.status(201).json({
           status: 201,
           message: 'User created successfully',
-          data: [{ token: token, created: user[user.length-1] }],
+          data: [{
+            token: token,
+            created: {
+              id: user[user.length - 1].id,
+              firstName: user[user.length - 1].firstName,
+              lastName: user[user.length - 1].lastName,
+              email: user[user.length - 1].email,
+              phoneNumber: user[user.length - 1].phoneNumber,
+              username: user[user.length - 1].username,
+            },
+          }],
         });
       }
     }
