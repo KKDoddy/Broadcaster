@@ -142,6 +142,19 @@ describe("running red-flag routes tests", () => {
       });
   });
 
+  it("should get a specific red-flag", done => {
+    chai
+      .request(app)
+      .get(`/api/v1/red-flags/2435`)
+      .send()
+      .set("token", KarambiziToken)
+      .end((err, result) => {
+        result.should.have.status(404);
+        result.body.should.have.property("error");
+        done();
+      });
+  });
+
   it("should be able to modify the comment of a specific red-flag", done => {
     chai
       .request(app)
