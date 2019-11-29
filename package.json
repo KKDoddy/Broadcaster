@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --exec babel-node server/app.js",
+    "build": "babel ./server -d build",
+    "start": "npm run build && node build/app.js",
+    "myapp": "nodemon --exec babel-node server/app.js",
     "test": "nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 10000 --exit server/test/*.test.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
