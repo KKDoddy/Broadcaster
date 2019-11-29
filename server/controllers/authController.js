@@ -53,7 +53,7 @@ class authorization {
         });
       } else {
         let actualId;
-        if (user.length != 0) {
+        if (user.length !== 0) {
           actualId = user[user.length - 1].id + 1;
         } else {
           actualId = 1;
