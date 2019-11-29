@@ -17,7 +17,11 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/red-flags', rfRoutes);
 
 app.get('/', (req, res) => {
-  res.status(200).json({ message: 'welcome to BROADCASTER' });
+  res.status(200).json({status: 200, message: 'welcome to BROADCASTER' });
+});
+
+app.get('*', (req,res)=>{
+  res.status(404).json({status: 404, message: 'Resource not found' });
 });
 
 app.listen(process.env.PORT, () => {

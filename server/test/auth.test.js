@@ -154,6 +154,13 @@ describe('user authentication tests', () => {
     });
   });
 
+  it('should not accept unknown routes', (done) => {
+    chai.request(app).get('/khk').send(InvalidSignupPasswordConfirmation).end((err, result) => {
+      result.should.have.status(404);
+      done();
+    });
+  });
+
   it('a user should be able to signin', (done) => {
     chai.request(app).post('/api/v1/auth/signin').send(KarambiziSignin).end((err, result) => {
       result.should.have.status(200);
