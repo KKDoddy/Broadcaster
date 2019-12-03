@@ -5,7 +5,7 @@ import multer from 'multer';
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const folderName = req.baseUrl;
-    cb(null, `./server/uploads/${folderName.slice(folderName.lastIndexOf('/') + 1)}/`);
+    cb(null, `./server/v1/uploads/${folderName.slice(folderName.lastIndexOf('/') + 1)}/`);
   },
   filename: (req, file, cb) => {
     const extension = file.mimetype;
