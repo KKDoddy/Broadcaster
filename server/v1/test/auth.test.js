@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import chai from 'chai';
 import http from 'chai-http';
-import app from '../app';
+import app from '../../app';
 
 chai.use(http);
 chai.should();
@@ -12,8 +12,8 @@ const Karambizi = {
   email: 'karemano@gmail.com',
   phoneNumber: '0788654543',
   username: 'Emanuel23',
-  password: "@Magogo23",
-  passwordConfirmation: "@Magogo23"
+  password: '@Magogo23',
+  passwordConfirmation: '@Magogo23',
 };
 
 const Goava = {
@@ -34,16 +34,6 @@ const karambiziSameEmail = {
   username: 'MMinani',
   password: '@Magogo23',
   passwordConfirmation: '@Magogo23',
-};
-
-const KarambiziminaniSameIdEmail = {
-  firstName: 'JClaude',
-  lastName: 'Minani',
-  email: 'karemano@gmail.com',
-  phoneNumber: '0788654543',
-  username: 'MMinani',
-  password: 'Minani123',
-  passwordConfirmation: 'Minani123',
 };
 
 const InvalidSignup = {
@@ -87,7 +77,6 @@ const KarambiziSigninWrongPassword = {
 };
 
 describe('user authentication tests', () => {
-
   it('user should be able to signup', (done) => {
     chai.request(app).post('/api/v1/auth/signup').send(Karambizi).end((err, result) => {
       result.should.have.status(201);

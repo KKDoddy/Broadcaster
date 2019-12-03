@@ -7,8 +7,9 @@
     "build": "babel ./server -d build",
     "start": "npm run build && node build/app.js",
     "myapp": "nodemon --exec babel-node server/app.js",
-    "test": "nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 10000 --exit server/test/*.test.js",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "test": "nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 10000 --exit server/v1/test/*.test.js",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "dbInit": "babel-node server/v2/models/user.js && babel-node server/v2/models/red-flag.js"
   },
   "repository": {
     "type": "git",
@@ -49,6 +50,7 @@
     "express-validator": "^6.2.0",
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.2",
+    "pg": "^7.14.0",
     "uuid": "^3.3.3"
   }
 }

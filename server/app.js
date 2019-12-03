@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import parser from 'body-parser';
-import authRoutes from './routes/auth';
-import rfRoutes from './routes/red-flags';
+import authRoutes from './v1/routes/auth';
+import rfRoutes from './v1/routes/red-flags';
 
 dotenv.config();
 
@@ -17,11 +17,11 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/red-flags', rfRoutes);
 
 app.get('/', (req, res) => {
-  res.status(200).json({status: 200, message: 'welcome to BROADCASTER' });
+  res.status(200).json({ status: 200, message: 'welcome to BROADCASTER' });
 });
 
-app.get('*', (req,res)=>{
-  res.status(404).json({status: 404, message: 'Resource not found' });
+app.get('*', (req, res) => {
+  res.status(404).json({ status: 404, message: 'Resource not found' });
 });
 
 app.listen(process.env.PORT, () => {
