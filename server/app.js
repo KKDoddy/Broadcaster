@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import parser from 'body-parser';
 import authRoutes from './v1/routes/auth';
+import authRoutes2 from './v2/routes/auth';
 import rfRoutes from './v1/routes/red-flags';
 
 dotenv.config();
@@ -14,6 +15,7 @@ app.use(parser.json());
 
 // routes
 app.use('/api/v1/auth', authRoutes);
+app.use('/api/v2/auth', authRoutes2);
 app.use('/api/v1/red-flags', rfRoutes);
 
 app.get('/', (req, res) => {
