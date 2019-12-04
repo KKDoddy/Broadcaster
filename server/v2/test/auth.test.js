@@ -16,6 +16,16 @@ const Karambizi = {
   passwordConfirmation: '@Magogo23',
 };
 
+const Goava = {
+  firstName: 'Alex',
+  lastName: 'Guevora',
+  email: 'gege@gmail.com',
+  phoneNumber: '0788654543',
+  username: 'Minanil23',
+  password: '@Magogo23',
+  passwordConfirmation: '@Magogo23',
+};
+
 const karambiziSameEmail = {
   firstName: 'JClaude',
   lastName: 'Minani',
@@ -44,6 +54,26 @@ const InvalidSignupPasswordConfirmation = {
   username: 'MMina$ni',
   password: '@Magogo23',
   passwordConfirmation: '@Magogo2333',
+};
+
+const KarambiziSignin = {
+  email: 'karemano@gmail.com',
+  password: '@Magogo23',
+};
+
+const InvalidSignin = {
+  email: 'karema no@gmail.com',
+  password: '',
+};
+
+const KarambiziSigninWrongEmail = {
+  email: 'karemano09@gmail.com',
+  password: '@Magogo23',
+};
+
+const KarambiziSigninWrongPassword = {
+  email: 'karemano@gmail.com',
+  password: 'password',
 };
 
 describe('user authentication tests', () => {
@@ -87,5 +117,38 @@ describe('user authentication tests', () => {
     } catch (error) {
       console.log(error);
     }
+  });
+
+  it('a user should be able to signin', (done) => {
+    chai.request(app).post('/api/v2/auth/signin').send(KarambiziSignin).end((err, result) => {
+      result.should.have.status(200);
+      result.body.should.have.property('message', 'successfully logged in');
+      result.body.should.have.property('data');
+      done();
+    });
+  });
+
+  it('should not allow signin with wrong inputs', (done) => {
+    chai.request(app).post('/api/v2/auth/signin').send(InvalidSignin).end((err, result) => {
+      result.should.have.status(422);
+      result.body.should.have.property('error');
+      done();
+    });
+  });
+
+  it('signin with wrong email', (done) => {
+    chai.request(app).post('/api/v2/auth/signin').send(KarambiziSigninWrongEmail).end((err, result) => {
+      result.should.have.status(401);
+      result.body.should.have.property('error', 'username or password incorrect');
+      done();
+    });
+  });
+
+  it('signin with wrong password', (done) => {
+    chai.request(app).post('/api/v2/auth/signin').send(KarambiziSigninWrongPassword).end((err, result) => {
+      result.should.have.status(401);
+      result.body.should.have.property('error', 'username or password incorrect');
+      done();
+    });
   });
 });
