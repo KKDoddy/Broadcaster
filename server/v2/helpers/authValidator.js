@@ -32,4 +32,19 @@ const signupChecker = [
     }),
 ];
 
-export { signupChecker };
+const signinChecker = [
+  check('email', 'invalid email address').not().isEmpty().withMessage('email field cannot be empty')
+    .exists()
+    .withMessage('email required')
+    .trim()
+    .isEmail()
+    .withMessage('invalid email address')
+    .normalizeEmail(),
+  check('password').not().isEmpty().withMessage('password field cannot be empty')
+    .exists()
+    .withMessage('password required')
+    .isString()
+    .withMessage('a string is expected'),
+];
+
+export { signupChecker, signinChecker };
