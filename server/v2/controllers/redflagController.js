@@ -130,6 +130,22 @@ class redflagController {
     }
   }
 
+  static async deleteRedFlag(req, res) {
+    const red = await executeQuery(redflag.getRedflag, [req.params.id]);
+    if (red.length === 1) {
+      if (red[0].createdby === (req.uId).toString()) {
+        const deleted = executeQuery(redflag.deleteRedflag, [req.params.id]);
+        return res.status(200).json({
+          status: 200,
+          data: [{ id: red.id, message: 'red-flag record has been deleted' }],
+        });
+      }
+      return res
+        .status(401)
+        .json({ status: 401, error: 'not authorized to delete record' });
+    }
+    return res.status(404).json({ status: 404, error: 'record not found' });
+  }
 }
 
 export default redflagController;
