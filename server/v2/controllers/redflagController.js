@@ -102,6 +102,34 @@ class redflagController {
     }
   }
 
+  static async patchLocation(req, res) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(422).json({ status: 422, error: errors.array() });
+    } else {
+      const red = await executeQuery(redflag.getRedflag, [req.params.id]);
+      if (red.length === 1) {
+        if (red[0].createdby === (req.uId).toString()) {
+          const updated = await executeQuery(redflag.editRedflagLocation, [req.body.location, req.params.id]);
+          return res.status(201).json({
+            status: 201,
+            data: [
+              {
+                record: updated[0],
+                message: "Updated red-flag record's location",
+              },
+            ],
+          });
+        }
+        return res.status(401).json({
+          status: 401,
+          error: "not authorized to modify the record's location",
+        });
+      }
+      return res.status(404).json({ status: 404, error: 'record not found' });
+    }
+  }
+
 }
 
 export default redflagController;
