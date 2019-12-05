@@ -208,6 +208,36 @@ describe('running red-flag routes tests', () => {
     result.body.should.have.property('error');
   });
 
+  it('should not be able to delete a not_owned red-flag record', async () => {
+    const result = await chai
+      .request(app)
+      .delete(`/api/v2/red-flags/${ksId}`)
+      .send()
+      .set('token', GoavaToken);
+    result.should.have.status(401);
+    result.body.should.have.property('error');
+  });
+
+  it('should be able to delete a red-flag record', async () => {
+    const result = await chai
+      .request(app)
+      .delete(`/api/v2/red-flags/${ksId}`)
+      .send()
+      .set('token', KarambiziToken);
+    result.should.have.status(200);
+    result.body.should.have.property('data');
+  });
+
+  it('cannot delete a non existing red-flag record', async () => {
+    const result = await chai
+      .request(app)
+      .delete(`/api/v2/red-flags/${ksId}`)
+      .send()
+      .set('token', KarambiziToken);
+    result.should.have.status(404);
+    result.body.should.have.property('error');
+  });
+
   it('should not allow access with invalid token', async () => {
     const result = await chai
       .request(app)

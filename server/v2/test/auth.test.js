@@ -84,6 +84,13 @@ describe('user authentication tests', () => {
     result.body.should.have.property('data');
   });
 
+  it('user should be able to signup (for Minani red-flags tests)', async () => {
+    const result = await chai.request(app).post('/api/v2/auth/signup').send(Goava);
+    result.should.have.status(201);
+    result.body.should.have.property('message', 'User created successfully');
+    result.body.should.have.property('data');
+  });
+
   it('should not allow user with already registered email to signup', async () => {
     const result = await chai.request(app).post('/api/v2/auth/signup').send(karambiziSameEmail);
     result.should.have.status(409);
