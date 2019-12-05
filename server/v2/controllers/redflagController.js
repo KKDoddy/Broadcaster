@@ -4,6 +4,10 @@ import executeQuery from '../config/connection';
 import redflag from '../queries/red-flag';
 
 class redflagController {
+  static async getAll(req, res) {
+    const owned = await executeQuery(redflag.getAllRedflag, []);
+    res.status(200).json({ staus: 200, data: owned });
+  }
   static async createRedFlag(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

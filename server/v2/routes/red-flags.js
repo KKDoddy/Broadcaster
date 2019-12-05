@@ -8,6 +8,7 @@ import controller from '../controllers/redflagController';
 
 const router = express.Router();
 
+router.get('', isLoggedIn, controller.getAll);
 router.post('', isLoggedIn, getUuid, upload.fields([{ name: 'images', maxCount: 1 }, { name: 'videos', maxCount: 1 }]), checker, controller.createRedFlag);
 
 export default router;
