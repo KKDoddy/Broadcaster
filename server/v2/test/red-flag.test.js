@@ -168,6 +168,46 @@ describe('running red-flag routes tests', () => {
     result.body.should.have.property('error');
   });
 
+  it('should be able to modify the location of a specific red-flag', async () => {
+    const result = await chai
+      .request(app)
+      .patch(`/api/v2/red-flags/${ksId}/location`)
+      .send({ location: '-30.025869,29.823188' })
+      .set('token', KarambiziToken);
+    result.should.have.status(201);
+    result.body.should.have.property('data');
+  });
+
+  it("shouldn't be able to modify the location of a not owned red-flag", async () => {
+    const result = await chai
+      .request(app)
+      .patch(`/api/v2/red-flags/${ksId}/location`)
+      .send({ location: '-30.025869,29.823188' })
+      .set('token', GoavaToken);
+    result.should.have.status(401);
+    result.body.should.have.property('error');
+  });
+
+  it('should not be able to modify the location of a red-flag with a non valid location', async () => {
+    const result = await chai
+      .request(app)
+      .patch(`/api/v2/red-flags/${ksId}/location`)
+      .send({ location: '' })
+      .set('token', KarambiziToken);
+    result.should.have.status(422);
+    result.body.should.have.property('error');
+  });
+
+  it('should not be able to modify the location of a non existing red-flag record', async () => {
+    const result = await chai
+      .request(app)
+      .patch('/api/v2/red-flags/12345678/location')
+      .send({ location: '-30.025869,29.823188' })
+      .set('token', KarambiziToken);
+    result.should.have.status(404);
+    result.body.should.have.property('error');
+  });
+
   it('should not allow access with invalid token', async () => {
     const result = await chai
       .request(app)
