@@ -4,6 +4,7 @@ import parser from 'body-parser';
 import authRoutes from './v1/routes/auth';
 import authRoutes2 from './v2/routes/auth';
 import rfRoutes from './v1/routes/red-flags';
+import rfRoutes2 from './v2/routes/red-flags';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(parser.json());
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v2/auth', authRoutes2);
 app.use('/api/v1/red-flags', rfRoutes);
+app.use('/api/v2/red-flags', rfRoutes2);
 
 app.get('/', (req, res) => {
   res.status(200).json({ status: 200, message: 'welcome to BROADCASTER' });

@@ -18,6 +18,8 @@ const createTable = async () => {
         comment TEXT NOT NULL,
         location TEXT NOT NULL,
         status TEXT NOT NULL,
+        image TEXT,
+        video TEXT,
         createdOn TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         createdBy TEXT NOT NULL
     )`;

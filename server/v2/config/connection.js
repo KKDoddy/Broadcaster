@@ -3,14 +3,14 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-let databaseURL = process.env.DATABASE;
-/* istanbul ignore else */
+let pool;
+
 if (process.env.NODE_ENV === 'TEST') {
-  databaseURL = process.env.TESTDATABASE;
+  pool = new Pool({ connectionString: process.env.TESTDATABASE });
+} else {
+  pool = new Pool({ connectionString: process.env.DATABASE_URL });
 }
 
-const pool = new Pool({ connectionString: databaseURL });
-/* istanbul ignore next */
 const executeQuery = async (text, parameters = []) => {
   const result = await pool.query(text, parameters);
   return result.rows || result;

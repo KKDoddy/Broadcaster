@@ -78,77 +78,52 @@ const KarambiziSigninWrongPassword = {
 
 describe('user authentication tests', () => {
   it('user should be able to signup', async () => {
-    try {
-      const result = await chai.request(app).post('/api/v2/auth/signup').send(Karambizi);
-      result.should.have.status(201);
-      result.body.should.have.property('message', 'User created successfully');
-      result.body.should.have.property('data');
-    } catch (error) {
-      console.log(error);
-    }
+    const result = await chai.request(app).post('/api/v2/auth/signup').send(Karambizi);
+    result.should.have.status(201);
+    result.body.should.have.property('message', 'User created successfully');
+    result.body.should.have.property('data');
   });
 
   it('should not allow user with already registered email to signup', async () => {
-    try {
-      const result = await chai.request(app).post('/api/v2/auth/signup').send(karambiziSameEmail);
-      result.should.have.status(409);
-      result.body.should.have.property('error', 'account with the same email already exists');
-      // done();
-    } catch (error) {
-      console.log(error);
-    }
+    const result = await chai.request(app).post('/api/v2/auth/signup').send(karambiziSameEmail);
+    result.should.have.status(409);
+    result.body.should.have.property('error', 'account with the same email already exists');
   });
 
   it('should not allow signup with invalid fields', async () => {
-    try {
-      const result = await chai.request(app).post('/api/v2/auth/signup').send(InvalidSignup);
-      result.should.have.status(422);
-      result.body.should.have.property('error');
-    } catch (error) {
-      console.log(error);
-    }
+    const result = await chai.request(app).post('/api/v2/auth/signup').send(InvalidSignup);
+    result.should.have.status(422);
+    result.body.should.have.property('error');
   });
 
   it('should not allow signup with incorrect password confirmation', async () => {
-    try {
-      const result = await chai.request(app).post('/api/v2/auth/signup').send(InvalidSignupPasswordConfirmation);
-      result.should.have.status(422);
-      result.body.should.have.property('error');
-    } catch (error) {
-      console.log(error);
-    }
+    const result = await chai.request(app).post('/api/v2/auth/signup').send(InvalidSignupPasswordConfirmation);
+    result.should.have.status(422);
+    result.body.should.have.property('error');
   });
 
-  it('a user should be able to signin', (done) => {
-    chai.request(app).post('/api/v2/auth/signin').send(KarambiziSignin).end((err, result) => {
-      result.should.have.status(200);
-      result.body.should.have.property('message', 'successfully logged in');
-      result.body.should.have.property('data');
-      done();
-    });
+  it('a user should be able to signin', async () => {
+    const result = await chai.request(app).post('/api/v2/auth/signin').send(KarambiziSignin);
+    result.should.have.status(200);
+    result.body.should.have.property('message', 'successfully logged in');
+    result.body.should.have.property('data');
   });
 
-  it('should not allow signin with wrong inputs', (done) => {
-    chai.request(app).post('/api/v2/auth/signin').send(InvalidSignin).end((err, result) => {
-      result.should.have.status(422);
-      result.body.should.have.property('error');
-      done();
-    });
+  it('should not allow signin with wrong inputs', async () => {
+    const result = await chai.request(app).post('/api/v2/auth/signin').send(InvalidSignin);
+    result.should.have.status(422);
+    result.body.should.have.property('error');
   });
 
-  it('signin with wrong email', (done) => {
-    chai.request(app).post('/api/v2/auth/signin').send(KarambiziSigninWrongEmail).end((err, result) => {
-      result.should.have.status(401);
-      result.body.should.have.property('error', 'username or password incorrect');
-      done();
-    });
+  it('signin with wrong email', async () => {
+    const result = await chai.request(app).post('/api/v2/auth/signin').send(KarambiziSigninWrongEmail);
+    result.should.have.status(401);
+    result.body.should.have.property('error', 'username or password incorrect');
   });
 
-  it('signin with wrong password', (done) => {
-    chai.request(app).post('/api/v2/auth/signin').send(KarambiziSigninWrongPassword).end((err, result) => {
-      result.should.have.status(401);
-      result.body.should.have.property('error', 'username or password incorrect');
-      done();
-    });
+  it('signin with wrong password', async () => {
+    const result = await chai.request(app).post('/api/v2/auth/signin').send(KarambiziSigninWrongPassword);
+    result.should.have.status(401);
+    result.body.should.have.property('error', 'username or password incorrect');
   });
 });
