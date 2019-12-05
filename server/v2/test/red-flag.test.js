@@ -128,6 +128,46 @@ describe('running red-flag routes tests', () => {
     result.body.should.have.property('error');
   });
 
+  it('should be able to modify the comment of a specific red-flag', async () => {
+    const result = await chai
+      .request(app)
+      .patch(`/api/v2/red-flags/${ksId}/comment`)
+      .send({ comment: 'modified comment' })
+      .set('token', KarambiziToken);
+    result.should.have.status(201);
+    result.body.should.have.property('data');
+  });
+
+  it("shouldn't be able to modify the comment of a not owned red-flag", async () => {
+    const result = await chai
+      .request(app)
+      .patch(`/api/v2/red-flags/${ksId}/comment`)
+      .send({ comment: 'modified comment' })
+      .set('token', GoavaToken);
+    result.should.have.status(401);
+    result.body.should.have.property('error');
+  });
+
+  it('should not be able to modify the comment of a red-flag with an empty comment', async () => {
+    const result = await chai
+      .request(app)
+      .patch(`/api/v2/red-flags/${ksId}/comment`)
+      .send({ comment: '' })
+      .set('token', KarambiziToken);
+    result.should.have.status(422);
+    result.body.should.have.property('error');
+  });
+
+  it('should not be able to modify the comment of a non existing red-flag record', async () => {
+    const result = await chai
+      .request(app)
+      .patch('/api/v2/red-flags/12345678/comment')
+      .send({ comment: 'some comment' })
+      .set('token', KarambiziToken);
+    result.should.have.status(404);
+    result.body.should.have.property('error');
+  });
+
   it('should not allow access with invalid token', async () => {
     const result = await chai
       .request(app)
