@@ -13,10 +13,10 @@ const isLoggedIn = async (req, res, next) => {
       req.uId = pretender.id;
       next();
     } else {
-      res.status(401).json({ error: 'user not recognized' });
+      return res.status(401).json({ error: 'user not recognized' });
     }
   } catch (error) {
-    res.status(403).json({ message: error.message });
+    return res.status(403).json({ message: error.message });
   }
 };
 

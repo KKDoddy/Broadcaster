@@ -12,7 +12,7 @@ const createTable = async () => {
     )`;
 
   const redflagTable = `CREATE TABLE IF NOT EXISTS redflags (
-        id SERIAL NOT NULL PRIMARY KEY,
+        id TEXT NOT NULL PRIMARY KEY,
         title TEXT NOT NULL,
         type TEXT NOT NULL,
         comment TEXT NOT NULL,
