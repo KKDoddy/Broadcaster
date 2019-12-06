@@ -8,10 +8,11 @@ const createTable = async () => {
         username TEXT NOT NULL,
         email TEXT NOT NULL UNIQUE,
         phoneNumber TEXT NOT NULL,
-        password TEXT NOT NULL
+        password TEXT NOT NULL,
+        role TEXT NOT NULL
     )`;
 
-  const redflagTable = `CREATE TABLE IF NOT EXISTS redflags (
+  const recordTable = `CREATE TABLE IF NOT EXISTS records (
         id TEXT NOT NULL PRIMARY KEY,
         title TEXT NOT NULL,
         type TEXT NOT NULL,
@@ -25,7 +26,7 @@ const createTable = async () => {
     )`;
 
   await executeQuery(userTable, []);
-  await executeQuery(redflagTable, []);
+  await executeQuery(recordTable, []);
 };
 
 createTable();
