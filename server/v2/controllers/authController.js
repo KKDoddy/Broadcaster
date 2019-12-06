@@ -15,7 +15,7 @@ class authorization {
 
       if (found.length === 1) {
         if (bcrypt.compareSync(req.body.password, found[0].password)) {
-          const token = jwt.sign({ email: found[0].email }, process.env.PRIVATEKEY);
+          const token = jwt.sign({ email: found[0].email, role: found[0].role }, process.env.PRIVATEKEY);
           res.status(200).json({
             status: 200,
             message: 'successfully logged in',
@@ -52,8 +52,8 @@ class authorization {
         });
       } else {
         const password = bcrypt.hashSync(req.body.password, 10);
-        await executeQuery(user.createUser, [firstName, lastName, username, email, phoneNumber, password]);
-        const token = jwt.sign({ email: email }, process.env.PRIVATEKEY);
+        await executeQuery(user.createUser, [firstName, lastName, username, email, phoneNumber, password, 'citizen']);
+        const token = jwt.sign({ email: email, role: 'citizen' }, process.env.PRIVATEKEY);
         const saved = await executeQuery(user.userExists, [email]);
         res.status(201).json({
           status: 201,
