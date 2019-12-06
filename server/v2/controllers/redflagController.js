@@ -130,6 +130,28 @@ class redflagController {
     }
   }
 
+  static async patchStatus(req, res) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(422).json({ status: 422, error: errors.array() });
+    } else {
+      const red = await executeQuery(redflag.getRecord, [req.params.id, 'redflag']);
+      if (red.length === 1) {
+        const updated = await executeQuery(redflag.editRecordStatus, [req.body.status, req.params.id, 'redflag']);
+        return res.status(201).json({
+          status: 201,
+          data: [
+            {
+              record: updated[0],
+              message: "Updated redflag record's comment",
+            },
+          ],
+        });
+      }
+      return res.status(404).json({ status: 404, error: 'record not found' });
+    }
+  }
+
   static async deleteRedFlag(req, res) {
     const red = await executeQuery(redflag.getRecord, [req.params.id, 'redflag']);
     if (red.length === 1) {

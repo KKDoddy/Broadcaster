@@ -32,4 +32,14 @@ const locationChecker = [
     .withMessage('location cannot be empty'),
 ];
 
-export { checker, commentChecker, locationChecker };
+const statusChecker = [
+  check('status').exists().withMessage('status is required').isString()
+    .withMessage('status should be a string')
+    .not()
+    .isEmpty()
+    .withMessage('status cannot be empty'),
+];
+
+export {
+  checker, commentChecker, locationChecker, statusChecker,
+};
