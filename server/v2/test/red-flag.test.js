@@ -8,7 +8,7 @@ chai.should();
 const KarambiziToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVtYW5vQGdtYWlsLmNvbSIsImlhdCI6MTU3NDIwMjQ5MH0.XZTEDZjtGyz7QTEK1Qwb_mNkzkE6lqai9_LhkM1TP1o';
 const minaniToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmFuaUBnbWFpbC5jb20iLCJpYXQiOjE1NzQyMDI3OTZ9.zLVSFsUM06LgwsIvPoWvtlAPpEuUugXQ3iNYHsQdIlM';
 const GoavaToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdlZ2VAZ21haWwuY29tIiwiaWF0IjoxNTc0OTE5NzI1fQ.WMdgGAa7QzUcw6Fp_s15GqkGWWF4X9BjPfjXSAcBwLc';
-
+const adminToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtkZHlAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTc1NjAyNDMwfQ.EugjmWMLe0mxh1DpaJdG8cV-WuiK1f1Uv6eMjQE5sRg';
 
 describe('running red-flag routes tests', () => {
   let ksId;
@@ -21,7 +21,7 @@ describe('running red-flag routes tests', () => {
       .attach('images', `${__dirname}/redPicture.jpg`)
       .attach('videos', `${__dirname}/redVideo.mp4`)
       .set('token', KarambiziToken);
-      ksId = result.body.data[0].record.id;
+    ksId = result.body.data[0].record.id;
     result.should.have.status(201);
     result.body.should.have.property('data');
   });
@@ -90,8 +90,8 @@ describe('running red-flag routes tests', () => {
       .post('/api/v2/red-flags')
       .field('title', '')
       .field('type', '')
-      .field('location','-20000.025869,29.823188')
-      .field('status','')
+      .field('location', '-20000.025869,29.823188')
+      .field('status', '')
       .attach('images', `${__dirname}/redPicture.jpg`)
       .attach('videos', `${__dirname}/redVideo.mp4`)
       .set('token', KarambiziToken);
@@ -205,6 +205,56 @@ describe('running red-flag routes tests', () => {
       .send({ location: '-30.025869,29.823188' })
       .set('token', KarambiziToken);
     result.should.have.status(404);
+    result.body.should.have.property('error');
+  });
+
+  it('admin should be able to modify the status of an existing red-flag record', async () => {
+    const result = await chai
+      .request(app)
+      .patch(`/api/v2/red-flags/${ksId}/status`)
+      .send({ status: 'resolved' })
+      .set('token', adminToken);
+    result.should.have.status(201);
+    result.body.should.have.property('data');
+  });
+
+  it('admin should not be able to modify the status of a non existing red-flag record', async () => {
+    const result = await chai
+      .request(app)
+      .patch('/api/v2/red-flags/1234/status')
+      .send({ status: 'resolved' })
+      .set('token', adminToken);
+    result.should.have.status(404);
+    result.body.should.have.property('error');
+  });
+
+  it('should not allow a not admin account holder to modify the status of a red-flag record', async () => {
+    const result = await chai
+      .request(app)
+      .patch(`/api/v2/red-flags/${ksId}/status`)
+      .send({ status: 'resolved' })
+      .set('token', KarambiziToken);
+    result.should.have.status(401);
+    result.body.should.have.property('error');
+  });
+
+  it('should not allow a not existing admin account holder to modify the status of a red-flag record', async () => {
+    const result = await chai
+      .request(app)
+      .patch(`/api/v2/red-flags/${ksId}/status`)
+      .send({ status: 'resolved' })
+      .set('token', minaniToken);
+    result.should.have.status(401);
+    result.body.should.have.property('error');
+  });
+
+  it('should not allow admin to modify the status of a red-flag record with invalid status', async () => {
+    const result = await chai
+      .request(app)
+      .patch(`/api/v2/red-flags/${ksId}/status`)
+      .send({ status: '' })
+      .set('token', adminToken);
+    result.should.have.status(422);
     result.body.should.have.property('error');
   });
 

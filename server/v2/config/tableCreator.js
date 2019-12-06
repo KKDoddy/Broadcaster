@@ -1,4 +1,5 @@
 import executeQuery from './connection';
+import { getMaxListeners } from 'cluster';
 
 const createTable = async () => {
   const userTable = `CREATE TABLE IF NOT EXISTS users (
@@ -27,6 +28,8 @@ const createTable = async () => {
 
   await executeQuery(userTable, []);
   await executeQuery(recordTable, []);
+  const createAdmin = "INSERT INTO users (firstName, lastName, username, email, phonenumber, password, role) VALUES ('Doddy','Kalimba','Kkd','kddy@gmail.com','0782244544','$2b$10$5.knSC0H8z/PpUPwFeV2cOqWUb3jUJ0bQh4YwWTC4qbHIEzC2fXoq','admin')";
+  await executeQuery(createAdmin, []);
 };
 
 createTable();

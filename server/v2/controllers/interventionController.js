@@ -102,6 +102,29 @@ class interventionController {
     }
   }
 
+  static async patchStatus(req, res) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(422).json({ status: 422, error: errors.array() });
+    } else {
+      const int = await executeQuery(intervention.getRecord, [req.params.id, 'intervention']);
+      if (int.length === 1) {
+        const updated = await executeQuery(intervention.editRecordStatus, [req.body.status, req.params.id, 'intervention']);
+        return res.status(201).json({
+          status: 201,
+          data: [
+            {
+              record: updated[0],
+              message: "Updated intervention record's comment",
+            },
+          ],
+        });
+      }
+      return res.status(404).json({ status: 404, error: 'record not found' });
+    }
+  }
+
+  // eslint-disable-next-line consistent-return
   static async patchLocation(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
